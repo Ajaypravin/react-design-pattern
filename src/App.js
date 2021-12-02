@@ -1,8 +1,8 @@
 import SplitScreen from "./SpliScreen";
 import "./App.css";
 
-const LeftHandComponent = () => {
-  return <h1 style={{ backgroundColor: "green" }}>Left !</h1>;
+const LeftHandComponent = ({ text }) => {
+  return <h1 style={{ backgroundColor: "green" }}>{text}</h1>;
 };
 
 const RightHandComponent = () => {
@@ -10,7 +10,13 @@ const RightHandComponent = () => {
 };
 
 function App() {
-  return <SplitScreen Left={LeftHandComponent} Right={RightHandComponent} />;
+  return (
+    <SplitScreen leftWeight={1} rightWeight={3}>
+      {/* This approch is good if we want to pass a component with props */}
+      <LeftHandComponent text={"Left !"} />
+      <RightHandComponent />
+    </SplitScreen>
+  );
 }
 
 export default App;
