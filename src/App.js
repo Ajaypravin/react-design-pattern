@@ -1,21 +1,41 @@
-import SplitScreen from "./SpliScreen";
-import "./App.css";
-
-const LeftHandComponent = ({ text }) => {
-  return <h1 style={{ backgroundColor: "green" }}>{text}</h1>;
-};
-
-const RightHandComponent = () => {
-  return <h1 style={{ backgroundColor: "yellow" }}>Right !</h1>;
-};
+import RegularList from "./RegularList";
+import SmallPersonListItem from "./people/SmallPersonListItem";
+import LargePersonListItem from "./people//LargePersonListItem";
+const people = [
+  {
+    name: "John Doe",
+    age: 54,
+    hairColor: "brown",
+    hobbies: ["swimming", "bicycling", "video games"],
+  },
+  {
+    name: "Brenda Smith",
+    age: 33,
+    hairColor: "black",
+    hobbies: ["golf", "mathematics"],
+  },
+  {
+    name: "Jane Garcia",
+    age: 27,
+    hairColor: "blonde",
+    hobbies: ["biology", "medicine", "gymnastics"],
+  },
+];
 
 function App() {
   return (
-    <SplitScreen leftWeight={1} rightWeight={3}>
-      {/* This approch is good if we want to pass a component with props */}
-      <LeftHandComponent text={"Left !"} />
-      <RightHandComponent />
-    </SplitScreen>
+    <>
+      <RegularList
+        items={people}
+        resourceName="person"
+        itemComponent={SmallPersonListItem}
+      />
+      <RegularList
+        items={people}
+        resourceName="person"
+        itemComponent={LargePersonListItem}
+      />
+    </>
   );
 }
 
